@@ -3,7 +3,8 @@ const mongoose = require('./connection.js')
 
 
 const LibrarySchema = new mongoose.Schema({
- name: String
+ name: String,
+ description: String
 })
 
 
