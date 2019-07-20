@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import { Redirect, Link } from 'react-router-dom'
+import Books from "./Books"
+
+
 
 export default class SingleLibrary extends Component {
     
@@ -141,6 +144,7 @@ export default class SingleLibrary extends Component {
                     </Link>
                         
                     </div>
+
                 </div>
                 
                 

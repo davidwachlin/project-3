@@ -10,9 +10,11 @@ function App() {
     <div className="App">
       <Router>
         <Switch>
-          <Route exact path="/" component={Libraries}/>
+          <Route path = "/:libraryId/books/:bookId" />
           <Route path="/:libraryId/books" component={Books} />
           <Route path="/:libraryId" component={SingleLibrary} />
+          <Route exact path="/" component={Libraries}/>
+
 
         </Switch>
       </Router>
