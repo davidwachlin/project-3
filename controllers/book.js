@@ -36,7 +36,12 @@ bookRouter.put('/:bookId', (req, res) => {
         })
 })
 
-
+bookRouter.delete('/:bookId', (req, res) => {
+    bookApi.deleteBook(req.params.bookId)
+        .then((book) => {
+            res.json(book)
+        })
+})
 
 
 module.exports = {
