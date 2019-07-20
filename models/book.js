@@ -3,15 +3,20 @@ const mongoose = require('./connection.js')
 
 
 const BookSchema = new mongoose.Schema({
- title: String
+ name: String,
+ description: String,
+ libraryId: mongoose.Types.ObjectId
 })
 
 
 const BookCollection = mongoose.model('Book', BookSchema)
 
-
 function getAllBooks() {
-  return BookCollection.find()
+  BookCollection.find()
+}
+
+function getBooksByLibraryId(libraryId) {
+  return BookCollection.find({libraryId: libraryId})
 }
 
 function getBook(bookId) {
@@ -33,6 +38,7 @@ function deleteBook(bookId) {
 
 module.exports = {
   getAllBooks,
+  getBooksByLibraryId,
   getBook,
   addNewBook,
   updateBook,
