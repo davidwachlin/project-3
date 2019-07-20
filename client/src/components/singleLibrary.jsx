@@ -42,7 +42,7 @@ export default class SingleLibrary extends Component {
     }
 
     handleDeleteLibrary = () => {
-        axios.delete(`api/librarys/${this.state.library._id}`)
+        axios.delete(`api/libraries/${this.state.library._id}`)
             .then(() => {
                 this.setState({redirectToHome: true})
             })

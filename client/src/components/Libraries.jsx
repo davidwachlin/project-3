@@ -54,9 +54,9 @@ export default class Libraries extends Component {
     render() {
         let creaturesList = this.state.libraries.map((library) => {
             return (
-                <div className="libraries">
+                <div key={library._id} className="libraries">
                 <Link
-                    key={library._id}
+   
                     to={`/${library._id}`}
                 >
                     {library.name}
