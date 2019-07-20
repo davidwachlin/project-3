@@ -29,6 +29,15 @@ bookRouter.get('/:bookId', (req, res) => {
         })
 })
 
+bookRouter.put('/:bookId', (req, res) => {
+    bookApi.updateBook(req.params.bookId, req.body)
+        .then((updatedBook) => {
+            res.json(updatedBook)
+        })
+})
+
+
+
 
 module.exports = {
     bookRouter

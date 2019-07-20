@@ -28,7 +28,7 @@ function addNewBook(bookObject) {
 }
 
 function updateBook(bookId, bookObject) {
-  return BookCollection.findByIdAndUpdate(bookId, bookObject)
+  return BookCollection.findByIdAndUpdate(bookId, bookObject, {new: true})
 }
 
 function deleteBook(bookId) {
