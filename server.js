@@ -19,7 +19,7 @@ app.use(express.static(`${__dirname}/client/build`))
 
 
 app.use('/api/libraries', libraryRouter)
-app.use('/api/libraries/:libraryId//books', booksRouter)
+app.use('/api/libraries/:libraryId/books', bookRouter)
 
 
 app.get('/*', (req, res) => {

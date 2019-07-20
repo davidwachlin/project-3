@@ -3,7 +3,7 @@ const express = require('express')
 const bookApi = require('../models/book')
 const libraryApi = require('../models/library')
 
-const bookRouter = express.Router({mergeParams: true})
+const bookRouter = express.Router({ mergeParams: true })
 
 bookRouter.get('/', (req, res) => {
     const libraryId = req.params.libraryId
@@ -15,7 +15,7 @@ bookRouter.get('/', (req, res) => {
 
 
 bookRouter.post('/', (req, res) => {
-    req.body.LibraryId = req.params.libraryId
+    req.body.libraryId = req.params.libraryId
     bookApi.addNewBook(req.body)
         .then((book) => {
             res.json(book)
@@ -28,3 +28,8 @@ bookRouter.get('/:bookId', (req, res) => {
             res.json(book)
         })
 })
+
+
+module.exports = {
+    bookRouter
+}
