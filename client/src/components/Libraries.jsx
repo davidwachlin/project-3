@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
-import './libraries.css'
+import './Libraries.css'
 
 export default class Libraries extends Component {
 
     state = {
         libraries: [],
         isNewFormDisplayed: false,
-        newCreature: {
+        newLibrary: {
             name: "",
             description: ""
         }
@@ -27,15 +27,15 @@ export default class Libraries extends Component {
 
 
     handleInputChange = (event) => {
-        const newCreature = { ...this.state.newCreature }
-        newCreature[event.target.name] = event.target.value
+        const newLibrary = { ...this.state.newLibrary }
+        newLibrary[event.target.name] = event.target.value
 
-        this.setState({ newCreature: newCreature })
+        this.setState({ newLibrary: newLibrary })
     }
 
     handleSubmit = (event) => {
         event.preventDefault()
-        axios.post(`api/libraries`, this.state.newCreature)
+        axios.post(`api/libraries`, this.state.newLibrary)
             .then(() => {
                 this.setState({
                     isNewFormDisplayed: false
@@ -52,7 +52,7 @@ export default class Libraries extends Component {
 
 
     render() {
-        let creaturesList = this.state.libraries.map((library) => {
+        let librariesList = this.state.libraries.map((library) => {
             return (
                 <div key={library._id} className="libraries">
                 <Link
@@ -81,7 +81,7 @@ export default class Libraries extends Component {
                         id="new-library-description"
                         name="description"
                         onChange={this.handleInputChange}
-                        value={this.state.newCreature.description}
+                        value={this.state.newLibrary.description}
                     />
                     <input type="submit" value="Create Library" />
                 </form>
@@ -90,7 +90,7 @@ export default class Libraries extends Component {
                 :<div>
                     <button onClick={this.handleToggleNewForm}>New Library</button>
                     <hr></hr>
-                    {creaturesList}
+                    {librariesList}
                 </div>
         )
     }
