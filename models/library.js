@@ -3,7 +3,8 @@ const mongoose = require('./connection.js')
 
 
 const LibrarySchema = new mongoose.Schema({
- address: {
+  name: String,
+  address: {
    type: String,
    required: true
  },
@@ -11,11 +12,9 @@ const LibrarySchema = new mongoose.Schema({
    type: String,
    required: true
  },
- zipCode: String,
- charterNumber: Number,
+ zipcode: String,
+ charter: Number,
  description: String,
- 
-
 })
 
 

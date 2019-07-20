@@ -78,7 +78,11 @@ export default class SingleLibrary extends Component {
                     <button onClick={this.handleToggleEditForm}>Edit Library</button>
                     <button onClick={this.handleDeleteLibrary}>Delete Library</button>
                     <h2>{this.state.library.name}</h2>
-                    <p>{this.state.library.description}</p>
+                    <p>Description: {this.state.library.description}</p>
+                    <p>{this.state.library.address}</p>
+                    <p>{this.state.library.city}</p>
+                    <p>{this.state.library.zipcode}</p>
+                    <p>{this.state.library.charter}</p>
                 </div>
                 
                 
