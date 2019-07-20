@@ -1,15 +1,9 @@
-/* Step 1 import React, { Component } and axios
- *
- */
 import React, { Component } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 
 
-/* Step 2
- * Rename this class to reflect the component being created
- *
- */
+
 export default class Books extends Component {
 
     state = {
@@ -26,8 +20,8 @@ export default class Books extends Component {
     }
 
     getAllBooks = () => {
-        axios.get('/api/books')
-        .then((res) => {
+        axios.get(`/api/libraries/${this.props.match.params.libraryId}/books`)
+            .then((res) => {
             this.setState({ books: res.data })
         })
     }
@@ -42,7 +36,7 @@ export default class Books extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault()
-        axios.post(`api/books`, this.state.newBook)
+        axios.post(`/api/libraries/${this.props.match.params.libraryId}/books`, this.state.newBook)
             .then(() => {
                 this.setState({
                     isNewFormDisplayed: false
@@ -61,9 +55,8 @@ export default class Books extends Component {
     render() {
         let booksList = this.state.books.map((book) => {
             return (
-                <div className="books">
+                <div key={book._id} className="books">
                 <Link
-                    key={book._id}
                     to={`/${book._id}`}
                 >
                     {book.name}

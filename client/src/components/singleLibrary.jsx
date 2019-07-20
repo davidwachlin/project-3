@@ -133,6 +133,14 @@ export default class SingleLibrary extends Component {
                     <p><strong>City: </strong>{this.state.library.city}</p>
                     <p><strong>Zipcode: </strong>{this.state.library.zipcode}</p>
                     <p><strong>Charter: </strong>{this.state.library.charter}</p>
+                    <div>
+                    <Link
+                        to={`/${this.state.library._id}/books`}
+                    >
+                        Books
+                    </Link>
+                        
+                    </div>
                 </div>
                 
                 

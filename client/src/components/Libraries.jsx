@@ -39,7 +39,7 @@ export default class Libraries extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault()
-        axios.post(`api/libraries`, this.state.newLibrary)
+        axios.post(`/api/libraries`, this.state.newLibrary)
             .then(() => {
                 this.setState({
                     isNewFormDisplayed: false

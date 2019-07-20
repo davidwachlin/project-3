@@ -11,8 +11,9 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/" component={Libraries}/>
-          <Route path="/:libraryId" component={SingleLibrary} />
           <Route path="/:libraryId/books" component={Books} />
+          <Route path="/:libraryId" component={SingleLibrary} />
+
         </Switch>
       </Router>
     </div>
