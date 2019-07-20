@@ -21,3 +21,10 @@ bookRouter.post('/', (req, res) => {
             res.json(book)
         })
 })
+
+bookRouter.get('/:bookId', (req, res) => {
+    bookApi.getBook(req.params.bookId)
+        .then((book) => {
+            res.json(book)
+        })
+})

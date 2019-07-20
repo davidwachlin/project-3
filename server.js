@@ -4,7 +4,7 @@ const app = express()
 
 
 const { libraryRouter } = require('./controllers/library.js')
-
+const { bookRouter } = require('./controllers/book')
 
 
 app.use(express.urlencoded({extended: true}))
@@ -19,6 +19,7 @@ app.use(express.static(`${__dirname}/client/build`))
 
 
 app.use('/api/libraries', libraryRouter)
+app.use('/api/libraries/:libraryId//books', booksRouter)
 
 
 app.get('/*', (req, res) => {
