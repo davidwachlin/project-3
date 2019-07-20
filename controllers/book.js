@@ -13,3 +13,11 @@ bookRouter.get('/', (req, res) => {
         })
 })
 
+
+bookRouter.post('/', (req, res) => {
+    req.body.LibraryId = req.params.libraryId
+    bookApi.addNewBook(req.body)
+        .then((book) => {
+            res.json(book)
+        })
+})
