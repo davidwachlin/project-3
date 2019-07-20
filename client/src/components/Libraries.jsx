@@ -60,11 +60,17 @@ export default class Libraries extends Component {
             return (
                 <div key={library._id} className="libraries">
                     <Link
-
                         to={`/${library._id}`}
                     >
                         {library.name}
+
+
                     </Link>
+                    <p>{library.address}</p>
+                    <p>{library.city}</p>
+                    <p>{library.zipcode}</p>
+                    <p>{library.charter}</p>
+                    <p>{library.description}</p>
                 </div>
             )
         })
@@ -122,7 +128,7 @@ export default class Libraries extends Component {
                         />
                     </div>
                     <div id="description-form">
-                        <label htmlFor="new-library-description">Create Description</label>
+                        <label htmlFor="new-library-description">Description: </label>
                         <input
                             type="text"
                             id="new-library-description"

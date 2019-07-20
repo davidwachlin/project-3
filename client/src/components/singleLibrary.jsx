@@ -55,34 +55,84 @@ export default class SingleLibrary extends Component {
         return (
             
                 this.state.isEditFormDisplayed
-                ? <form onSubmit={this.handleSubmit}>
-                    <label htmlFor="library-name">Create Name</label>
-                    <input 
-                        type="text" 
-                        id="library-name" 
-                        name="name" 
+                ? 
+
+                <form onSubmit={this.handleSubmit}>
+                <div id="name-form">
+                    <label htmlFor="library-name">Name: </label>
+                    <input
+                        type="text"
+                        id="library-name"
+                        name="name"
                         onChange={this.handleInputChange}
                         value={this.state.library.name}
                     />
-                    <label htmlFor="library-description">Create Name</label>
-                    <input 
-                        type="text" 
-                        id="library-description" 
-                        name="description" 
+                </div>
+                <div>
+                    <label htmlFor="library-address">Address:</label>
+                    <input
+                        type="text"
+                        id="library-address"
+                        name="address"
+                        onChange={this.handleInputChange}
+                        value={this.state.library.address}
+                    />
+                </div>
+                <div>
+                    <label htmlFor="library-city">City:</label>
+                    <input
+                        type="text"
+                        id="library-city"
+                        name="city"
+                        onChange={this.handleInputChange}
+                        value={this.state.library.city}
+                    />
+                </div>
+                <div id="zipcode-form">
+                    <label htmlFor="library-zipCode">Zipcode:</label>
+                    <input
+                        type="text"
+                        id="library-zipCode"
+                        name="zipcode"
+                        onChange={this.handleInputChange}
+                        value={this.state.library.zipcode}
+                    />
+                </div>
+                <div id="charter-form">
+                    <label htmlFor="library-charter">Charter Number:</label>
+                    <input
+                        type="text"
+                        id="library-charter"
+                        name="charter"
+                        onChange={this.handleInputChange}
+                        value={this.state.library.charter}
+                    />
+                </div>
+                <div id="description-form">
+                    <label htmlFor="library-description">Description:</label>
+                    <input
+                        type="text"
+                        id="library-description"
+                        name="description"
                         onChange={this.handleInputChange}
                         value={this.state.library.description}
                     />
-                    <input type="submit" value="Update Library" />
-                </form>
+                </div>
+                <div id="form-submit">
+                    <input type="submit" value="Save Changes" />
+                </div>
+
+                <button onClick={this.handleDeleteLibrary}>Delete Library</button>
+            </form>
                 : <div>
                     <button onClick={this.handleToggleEditForm}>Edit Library</button>
-                    <button onClick={this.handleDeleteLibrary}>Delete Library</button>
+
                     <h2>{this.state.library.name}</h2>
-                    <p>Description: {this.state.library.description}</p>
-                    <p>{this.state.library.address}</p>
-                    <p>{this.state.library.city}</p>
-                    <p>{this.state.library.zipcode}</p>
-                    <p>{this.state.library.charter}</p>
+                    <p><strong>Description:</strong> {this.state.library.description}</p>
+                    <p><strong>Address: </strong>{this.state.library.address}</p>
+                    <p><strong>City: </strong>{this.state.library.city}</p>
+                    <p><strong>Zipcode: </strong>{this.state.library.zipcode}</p>
+                    <p><strong>Charter: </strong>{this.state.library.charter}</p>
                 </div>
                 
                 
