@@ -16,7 +16,7 @@ export default class Books extends Component {
     }
     
     componentDidMount() {
-       this.getAllBooks();
+        this.getAllBooks();
     }
 
     getAllBooks = () => {
@@ -25,7 +25,6 @@ export default class Books extends Component {
             this.setState({ books: res.data })
         })
     }
-
 
     handleInputChange = (event) => {
         const newBook = { ...this.state.newBook }
@@ -41,7 +40,8 @@ export default class Books extends Component {
                 this.setState({
                     isNewFormDisplayed: false
                 })
-                this.getAllBooks()
+                this.getAllBooks();
+
             })
     }
 
@@ -53,7 +53,6 @@ export default class Books extends Component {
 
 
     render() {
-        this.getAllBooks();
         let booksList = this.state.books.map((book) => {
             return (
                 <div key={book._id} className="books">

@@ -19,7 +19,12 @@ export default class SingleLibrary extends Component {
                 this.setState({library: res.data})
             })
     }
-
+    // getAllBooks = () => {
+    //     axios.get(`/api/libraries/${this.props.match.params.libraryId}/books`)
+    //         .then((res) => {
+    //         this.setState({ books: res.data })
+    //     })
+    // }
     handleInputChange = (event) => {
         const copiedLibrary = {...this.state.library}
         copiedLibrary[event.target.name] = event.target.value
@@ -138,14 +143,11 @@ export default class SingleLibrary extends Component {
                     <p><strong>Zipcode: </strong>{this.state.library.zipcode}</p>
                     <p><strong>Charter: </strong>{this.state.library.charter}</p>
                     <div>
-                    <Books libraryId={this.state.library._id}/>
+                    <Books libraryId={this.props.match.params.libraryId}/>
                     
                     
-                    <Link
-                        to={`/${this.state.library._id}/books`}
-                    >
-                        Books
-                    </Link>
+                    
+
                         
                     </div>
 
