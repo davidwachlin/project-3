@@ -57,7 +57,7 @@ export default class Books extends Component {
             return (
                 <div key={book._id} className="books">
                 <Link
-                    to={`/${book._id}`}
+                    to={`/${this.props.match.params.libraryId}/books/${book._id}`}
                 >
                     {book.name}
                 </Link>

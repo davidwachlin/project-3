@@ -42,7 +42,7 @@ export default class SingleBook extends Component {
     }
 
     handleDeleteBook = () => {
-        axios.delete(`/api/libraries/${this.props.match.params.libraryId}/books/${this.state.bookId}`)
+        axios.delete(`/api/libraries/${this.props.match.params.libraryId}/books/${this.props.match.params.bookId}`)
             .then(() => {
                 this.setState({redirectToHome: true})
             })
