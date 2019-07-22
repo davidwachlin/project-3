@@ -75,6 +75,7 @@ export default class SingleBook extends Component {
                     <input type="submit" value="Update Book" />
                 </form>
                 : <div>
+                    <Link to={`/${this.props.match.params.libraryId}`}> Back </Link>
                     <button onClick={this.handleToggleEditForm}>Edit Book</button>
                     <button onClick={this.handleDeleteBook}>Delete Book</button>
                     <h2>{this.state.book.name}</h2>
