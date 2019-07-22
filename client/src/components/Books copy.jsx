@@ -20,7 +20,7 @@ export default class Books extends Component {
     }
 
     getAllBooks = () => {
-        axios.get(`/api/libraries/${this.props.libraryId}/books`)
+        axios.get(`/api/libraries/${this.props.match.params.libraryId}/books`)
             .then((res) => {
             this.setState({ books: res.data })
         })
@@ -36,7 +36,7 @@ export default class Books extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault()
-        axios.post(`/api/libraries/${this.props.libraryId}/books`, this.state.newBook)
+        axios.post(`/api/libraries/${this.props.match.params.libraryId}/books`, this.state.newBook)
             .then(() => {
                 this.setState({
                     isNewFormDisplayed: false
@@ -53,12 +53,11 @@ export default class Books extends Component {
 
 
     render() {
-        this.getAllBooks();
         let booksList = this.state.books.map((book) => {
             return (
                 <div key={book._id} className="books">
                 <Link
-                    to={`/${this.props.libraryId}/books/${book._id}`}
+                    to={`/${this.props.match.params.libraryId}/books/${book._id}`}
                 >
                     {book.name}
                 </Link>
