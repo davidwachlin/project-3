@@ -2,6 +2,11 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import './Libraries.css'
+import Button from '@material-ui/core/Button';
+import Box from '@material-ui/core/Box';
+import Card from '@material-ui/core/Card';
+import Container from '@material-ui/core/Container'
+
 
 export default class Libraries extends Component {
 
@@ -58,7 +63,7 @@ export default class Libraries extends Component {
     render() {
         let librariesList = this.state.libraries.map((library) => {
             return (
-                <div key={library._id} className="libraries">
+                <Card key={library._id} className="libraries">
                     <Link
                         to={`/${library._id}`}
                     >
@@ -71,12 +76,12 @@ export default class Libraries extends Component {
                     <p>{library.zipcode}</p>
                     <p>{library.charter}</p>
                     <p>{library.description}</p>
-                </div>
+                </Card>
             )
         })
         return (
             this.state.isNewFormDisplayed
-                ? <form onSubmit={this.handleSubmit}>
+                ? <Container><form onSubmit={this.handleSubmit}>
                     <div id="name-form">
                         <label htmlFor="new-library-name">Name: </label>
                         <input
@@ -141,13 +146,15 @@ export default class Libraries extends Component {
                         <input type="submit" value="Create Library" />
                     </div>
                 </form>
+                </Container>
 
 
-                : <div>
-                    <button onClick={this.handleToggleNewForm}>New Library</button>
+                : <Container>
+                    <Button variant="contained" color="primary" onClick={this.handleToggleNewForm}>New Library</Button>
                     <hr></hr>
                     {librariesList}
-                </div>
+                </Container>
+
         )
     }
 }

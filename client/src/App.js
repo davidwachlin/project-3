@@ -5,11 +5,14 @@ import Libraries from './components/Libraries.jsx';
 import Books from './components/Books'
 import SingleBook from './components/SingleBook'
 import './App.css';
+import Navbar from './components/Navbar'
 
 function App() {
   return (
     <div className="App">
+
       <Router>
+      <Navbar />
         <Switch>
           <Route path = "/:libraryId/books/:bookId" component={SingleBook}/>
           <Route path="/:libraryId/books" component={Books} />
