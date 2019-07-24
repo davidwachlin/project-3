@@ -7,6 +7,7 @@ import InputBase from '@material-ui/core/InputBase';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
+import './Navbar.css'
 
 
 const useStyles = makeStyles(theme => ({
@@ -66,7 +67,7 @@ export default function Navbar() {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
+    <div>
       <AppBar position="static">
         <Toolbar>
           <IconButton
