@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import Card from '@material-ui/core/Card'
+import Grid from '@material-ui/core'
 
 
 
@@ -56,11 +58,13 @@ export default class Books extends Component {
         let booksList = this.state.books.map((book) => {
             return (
                 <div key={book._id} className="books">
+                <Card>
                 <Link
                     to={`/${this.props.libraryId}/books/${book._id}`}
                 >
                     {book.name}
                 </Link>
+                </Card>
                 </div>
             )
         })
@@ -89,8 +93,11 @@ export default class Books extends Component {
 
                 :<div>
                     <button onClick={this.handleToggleNewForm}>New Book</button>
-                    <hr></hr>
+                    <Grid container>
                     {booksList}
+
+
+                    </Grid>
                 </div>
         )
     }

@@ -8,6 +8,7 @@ import { fade, makeStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import './Navbar.css'
+import { Link} from 'react-router-dom'
 
 
 const useStyles = makeStyles(theme => ({
@@ -78,13 +79,20 @@ export default function Navbar() {
           >
             <MenuIcon />
           </IconButton>
+
           <Typography className={classes.title} variant="h6" noWrap>
             Little Librarian
           </Typography>
+
+
+          <Link to={"/"}>Libraries</Link>
+
+
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
             </div>
+
             <InputBase
               placeholder="Search…"
               classes={{
