@@ -178,25 +178,25 @@ class SingleLibrary extends Component {
 								<Typography variant='subtitle1'>
 									<h2>{this.state.library.name}</h2>
 								</Typography>
-								<Typography variant='body2'>
+								<Typography variant='body1'>
 									<strong>Description:</strong> {this.state.library.description}
 								</Typography>
-								<p>
+								<Typography variant='body1'>
 									<strong>Address: </strong>
 									{this.state.library.address}
-								</p>
-								<p>
+									</Typography>
+									<Typography variant='body1'>
 									<strong>City: </strong>
 									{this.state.library.city}
-								</p>
-								<p>
+								</Typography>
+								<Typography variant='body1'>
 									<strong>Zipcode: </strong>
 									{this.state.library.zipcode}
-								</p>
-								<p>
+								</Typography>
+								<Typography variant='body1'>
 									<strong>Charter: </strong>
 									{this.state.library.charter}
-								</p>
+									</Typography>
 								<Grid item>
 									<button onClick={this.handleToggleEditForm}>
 										Edit Library
@@ -211,6 +211,7 @@ class SingleLibrary extends Component {
 					</Grid>
 				</Paper>
 
+
 				<div>
 					<Books libraryId={this.props.match.params.libraryId} />
 				</div>
@@ -224,3 +225,4 @@ SingleLibrary.propTypes = {
 };
 
 export default withStyles(styles)(SingleLibrary);
+
