@@ -42,6 +42,11 @@ function deleteAllLibraries() {
   return LibraryCollection.deleteMany()
 }
 
+function addLibraries(libraries) {
+  return LibraryCollection.create(libraries)
+}
+
+
 
 module.exports = {
   getAllLibraries,
@@ -49,5 +54,6 @@ module.exports = {
   addNewLibrary,
   updateLibrary,
   deleteLibrary,
-  deleteAllLibraries
+  deleteAllLibraries,
+  addLibraries
 }

@@ -43,6 +43,10 @@ function deleteAllBooks() {
   return BookCollection.deleteMany()
 }
 
+function addBooks(books) {
+  return BookCollection.create(books)
+}
+
 
 module.exports = {
   getAllBooks,
@@ -50,5 +54,7 @@ module.exports = {
   getBook,
   addNewBook,
   updateBook,
-  deleteBook
+  deleteBook,
+  deleteAllBooks,
+  addBooks
 }
