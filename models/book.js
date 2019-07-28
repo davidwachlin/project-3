@@ -3,8 +3,12 @@ const mongoose = require('./connection.js')
 
 
 const BookSchema = new mongoose.Schema({
- name: String,
+ title: String,
+ author: String,
+ isbn: String,
  description: String,
+ imgUrl: "",
+
  libraryId: mongoose.Types.ObjectId
 })
 

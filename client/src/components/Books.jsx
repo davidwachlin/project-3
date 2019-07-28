@@ -12,14 +12,21 @@ import CardMedia from "@material-ui/core/CardMedia";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
+import TextField from "@material-ui/core/TextField";
+import Box from '@material-ui/core/Box'
+import Button from '@material-ui/core/Button'
+import Container from '@material-ui/core/Container'
 
 export default class Books extends Component {
 	state = {
 		books: [],
 		isNewFormDisplayed: false,
 		newBook: {
-			name: "",
-			description: ""
+			title: '',
+			author: '',
+			isbn: '',
+			description: '',
+			imgUrl: '',
 		}
 	};
 
@@ -65,13 +72,14 @@ export default class Books extends Component {
 					<Card>
 						<CardActionArea>
 							<CardMedia
-								component="img"
-								image='https://via.placeholder.com/100x140'
+								component='img'
+								image={book.imgUrl}
 								title='placeholder'
+								className='bookcovers'
 							/>
 							<CardContent>
 								<Link to={`/${this.props.libraryId}/books/${book._id}`}>
-									{book.name}
+									{book.title}
 								</Link>
 							</CardContent>
 						</CardActionArea>
@@ -81,23 +89,80 @@ export default class Books extends Component {
 		});
 		return this.state.isNewFormDisplayed ? (
 			<form onSubmit={this.handleSubmit}>
-				<label htmlFor='new-book-name'>Create Name</label>
-				<input
+				<Box>
+				<TextField
+					id='new-book-title'
+					label='Title'
 					type='text'
-					id='new-book-name'
-					name='name'
+					name='title'
+					autoComplete='title'
+					margin='normal'
+					variant='outlined'
 					onChange={this.handleInputChange}
-					value={this.state.newBook.name}
+					value={this.state.newBook.title}
 				/>
-				<label htmlFor='new-book-description'>Create Description</label>
-				<input
+				</Box>
+				<Box>
+				<TextField
+					id='new-book-author'
+					label='Author'
 					type='text'
+					name='author'
+					autoComplete='author'
+					margin='normal'
+					variant='outlined'
+					onChange={this.handleInputChange}
+					value={this.state.newBook.author}
+				/>
+				</Box>
+				<Box>
+				<TextField
+					id='new-book-isbn'
+					label='ISBN'
+					type='text'
+					name='isbn'
+					autoComplete='isbn'
+					margin='normal'
+					variant='outlined'
+					onChange={this.handleInputChange}
+					value={this.state.newBook.isbn}
+				/>
+				</Box>
+				<Box>
+				<TextField
 					id='new-book-description'
+					label='Description'
+					type='text'
 					name='description'
+					multiline
+					rows='4'
+					margin='normal'
+					variant='outlined'
 					onChange={this.handleInputChange}
 					value={this.state.newBook.description}
 				/>
-				<input type='submit' value='Create Book' />
+				</Box>
+				<Box>
+				<TextField
+					id='new-book-imgUrl'
+					label='Image URL'
+					type='text'
+					name='imgUrl'
+					margin='normal'
+					variant='outlined'
+					onChange={this.handleInputChange}
+					value={this.state.newBook.imgUrl}
+				/>
+				</Box>
+				<input
+        			id="submit-form"
+        			type="submit"
+      			/>
+      			<label htmlFor="submit-form">
+        			<Button variant="contained" component="span" >
+          				Add Book
+        			</Button>
+					</label>
 			</form>
 		) : (
 			<div>
@@ -106,10 +171,12 @@ export default class Books extends Component {
 						<AddIcon onClick={this.handleToggleNewForm} />
 					</Fab>
 				</Tooltip>
-				{/* <button onClick={this.handleToggleNewForm}>New Book</button> */}
+
+				<Container>
 				<Grid container spacing={4}>
 					{booksList}
 				</Grid>
+				</Container>
 			</div>
 		);
 	}

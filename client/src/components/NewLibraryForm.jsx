@@ -1,67 +1,102 @@
 import React, { Component } from "react";
 import Container from '@material-ui/core/Container'
+import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
+import TextField from '@material-ui/core/TextField';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
 
 export default class NewLibraryForm extends Component {
 	render() {
 		return (
-			<Container>
+			<React.Fragment>
 				<form onSubmit={this.handleSubmit}>
-					<div id='name-form'>
+					<Box id='name-form'>
 						<label htmlFor='new-library-name'>Name: </label>
-						<input
-							type='text'
-							id='new-library-name'
-							name='name'
+						<TextField
 							onChange={this.handleInputChange}
 							value={this.state.newLibrary.name}
-						/>
-					</div>
-					<div>
-						<label htmlFor='new-library-address'>Address:</label>
-						<input
+							id='outlined-name-input'
+							label='Name'
+							className='textField'
 							type='text'
-							id='new-library-address'
+							name='name'
+							autoComplete='name'
+							margin='normal'
+							variant='outlined'
+						/>
+					</Box>
+					<Box>
+						<label htmlFor='new-library-address'>Address:</label>
+						<TextField
+							id='outlined-address-input'
+							label='Address'
+							className='textField'
+							type='text'
 							name='address'
+							autoComplete='Address'
+							margin='normal'
+							variant='outlined'
 							onChange={this.handleInputChange}
 							value={this.state.newLibrary.address}
 						/>
-					</div>
-					<div>
+					</Box>
+					<Box>
 						<label htmlFor='new-library-city'>City:</label>
-						<input
+						<TextField
+							id='outlined-city-input'
+							label='City'
+							className='textField'
 							type='text'
-							id='new-library-city'
 							name='city'
+							autoComplete='City'
+							margin='normal'
+							variant='outlined'
 							onChange={this.handleInputChange}
 							value={this.state.newLibrary.city}
 						/>
-					</div>
+					</Box>
 					<div id='zipcode-form'>
-						<label htmlFor='new-library-zipCode'>Zipcode:</label>
-						<input
+						{/* <label htmlFor='new-library-zipCode'>Zipcode:</label> */}
+						<TextField
+							id='outlined-zipcode-input'
+							label='Zipcode'
+							className='textField'
 							type='text'
-							id='new-library-zipCode'
 							name='zipcode'
+							autoComplete='Zipcode'
+							margin='normal'
+							variant='outlined'
 							onChange={this.handleInputChange}
 							value={this.state.newLibrary.zipcode}
 						/>
 					</div>
 					<div id='charter-form'>
 						<label htmlFor='new-library-charter'>Charter Number:</label>
-						<input
+						<TextField
+							id='outlined-charter-input'
+							label='Charter Number'
+							className='textField'
 							type='text'
-							id='new-library-charter'
 							name='charter'
+							autoComplete='Charter'
+							margin='normal'
+							variant='outlined'
 							onChange={this.handleInputChange}
 							value={this.state.newLibrary.charter}
 						/>
 					</div>
 					<div id='description-form'>
 						<label htmlFor='new-library-description'>Description: </label>
-						<input
+						<TextField
+							id='outlined-description-input'
+							label='Description'
+							className='textField'
 							type='text'
-							id='new-library-description'
 							name='description'
+							autoComplete='description'
+							margin='normal'
+							variant='outlined'
 							onChange={this.handleInputChange}
 							value={this.state.newLibrary.description}
 						/>
@@ -70,78 +105,104 @@ export default class NewLibraryForm extends Component {
 						<input type='submit' value='Create Library' />
 					</div>
 				</form>
-			</Container>
+			</React.Fragment>
 		);
 	}
 }
 
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
-import ButtonBase from '@material-ui/core/ButtonBase';
+import TextField from '@material-ui/core/TextField';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
 
-const useStyles = makeStyles(theme => ({
-  root: {
-	flexGrow: 1,
-  },
-  paper: {
-    padding: theme.spacing(2),
-    margin: 'auto',
-    maxWidth: 500,
-  },
-  image: {
-    width: 128,
-    height: 128,
-  },
-  img: {
-    margin: 'auto',
-    display: 'block',
-    maxWidth: '100%',
-    maxHeight: '100%',
-  },
-}));
-
-export default function ComplexGrid() {
-  const classes = useStyles();
-
+export default function AddressForm() {
   return (
-	<div>
-    <div className={classes.root}>
-      <Paper className={classes.paper}>
-        <Grid container spacing={2}>
-          <Grid item>
-            <ButtonBase className={classes.image}>
-              <img className={classes.img} alt="complex" src="/static/images/grid/complex.jpg" />
-            </ButtonBase>
-          </Grid>
-          <Grid item xs={12} sm container>
-            <Grid item xs container direction="column" spacing={2}>
-              <Grid item xs>
-                <Typography gutterBottom variant="subtitle1">
-                  Standard license
-                </Typography>
-                <Typography variant="body2" gutterBottom>
-                  Full resolution 1920x1080 • JPEG
-                </Typography>
-                <Typography variant="body2" color="textSecondary">
-                  ID: 1030114
-                </Typography>
-              </Grid>
-              <Grid item>
-                <Typography variant="body2" style={{ cursor: 'pointer' }}>
-                  Remove
-                </Typography>
-              </Grid>
-            </Grid>
-            <Grid item>
-              <Typography variant="subtitle1">$19.00</Typography>
-            </Grid>
-          </Grid>
+    <React.Fragment>
+      <Typography variant="h6" gutterBottom>
+        Shipping address
+      </Typography>
+      <Grid container spacing={3}>
+        <Grid item xs={12} sm={6}>
+          <TextField
+            required
+            id="firstName"
+            name="name"
+            label="First name"
+            fullWidth
+            autoComplete="fname"
+          />
         </Grid>
-      </Paper>
-    </div>
-
+        <Grid item xs={12} sm={6}>
+          <TextField
+            required
+            id="lastName"
+            name="lastName"
+            label="Last name"
+            fullWidth
+            autoComplete="lname"
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <TextField
+            required
+            id="address1"
+            name="address1"
+            label="Address line 1"
+            fullWidth
+            autoComplete="billing address-line1"
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <TextField
+            id="address2"
+            name="address2"
+            label="Address line 2"
+            fullWidth
+            autoComplete="billing address-line2"
+          />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <TextField
+            required
+            id="city"
+            name="city"
+            label="City"
+            fullWidth
+            autoComplete="billing address-level2"
+          />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <TextField id="state" name="state" label="State/Province/Region" fullWidth />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <TextField
+            required
+            id="zip"
+            name="zip"
+            label="Zip / Postal code"
+            fullWidth
+            autoComplete="billing postal-code"
+          />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <TextField
+            required
+            id="country"
+            name="country"
+            label="Country"
+            fullWidth
+            autoComplete="billing country"
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <FormControlLabel
+            control={<Checkbox color="secondary" name="saveAddress" value="yes" />}
+            label="Use this address for payment details"
+          />
+        </Grid>
+      </Grid>
+    </React.Fragment>
   );
 }

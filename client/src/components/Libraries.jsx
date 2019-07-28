@@ -1,28 +1,37 @@
-import React, { Component } from "react";
-import axios from "axios";
-import { Link } from "react-router-dom";
-import "./Libraries.css";
-import Button from "@material-ui/core/Button";
-import Box from "@material-ui/core/Box";
-import Card from "@material-ui/core/Card";
-import Container from "@material-ui/core/Container";
-import TextField from "@material-ui/core/TextField";
-import MenuItem from "@material-ui/core/MenuItem";
-import { makeStyles } from "@material-ui/core/styles";
-import Paper from "@material-ui/core/Paper";
-import Grid from "@material-ui/core/Grid";
+import React, { Component } from 'react';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
+import './Libraries.css';
+import Button from '@material-ui/core/Button';
+import Box from '@material-ui/core/Box';
+import Card from '@material-ui/core/Card';
+import Container from '@material-ui/core/Container';
+import TextField from '@material-ui/core/TextField';
+import MenuItem from '@material-ui/core/MenuItem';
+import { makeStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
+import CardMedia from '@material-ui/core/CardMedia';
+import CardContent from '@material-ui/core/CardContent';
+import CardActions from '@material-ui/core/CardActions';
+import { ListItem } from '@material-ui/core';
+import List from '@material-ui/core/List';
+
+
 
 export default class Libraries extends Component {
 	state = {
 		libraries: [],
 		isNewFormDisplayed: false,
 		newLibrary: {
-			name: "",
-			address: "",
-			city: "",
-			zipcode: "",
-			charter: "",
-			description: ""
+			charter: '',
+			steward: '',
+			address: '',
+			city: '',
+			zipcode: '',
+			description: '',
+			imgUrl: ''
 		}
 	};
 
@@ -31,7 +40,7 @@ export default class Libraries extends Component {
 	}
 
 	getAllLibraries = () => {
-		axios.get("/api/libraries").then(res => {
+		axios.get('/api/libraries').then(res => {
 			this.setState({ libraries: res.data });
 		});
 	};
@@ -62,81 +71,36 @@ export default class Libraries extends Component {
 	render() {
 		let librariesList = this.state.libraries.map(library => {
 			return (
-				<Card key={library._id} className='libraries'>
-					<Link to={`/${library._id}`}>{library.name}</Link>
-					<p>{library.address}</p>
-					<p>{library.city}</p>
-					<p>{library.zipcode}</p>
-					<p>{library.charter}</p>
-					<p>{library.description}</p>
-				</Card>
+				<ListItem key={library._id}>
+					<Card className='librarycard'>
+						<CardMedia
+							className="library-img"
+							image={library.imgUrl}
+							title='Library Image'
+						/>
+						<CardContent>
+							<Typography gutterBottom variant='h5'>
+								<Link to={`/${library._id}`}>Charter #{library.charter}</Link>
+							</Typography>
+							<Typography>{library.description}</Typography>
+						</CardContent>
+						<CardActions>
+							<Button size='small' color='primary'>
+								View
+							</Button>
+							<Button size='small' color='primary'>
+								Edit
+							</Button>
+						</CardActions>
+					</Card>
+				</ListItem>
+
 			);
 		});
 		return this.state.isNewFormDisplayed ? (
 			<Container>
 				<form onSubmit={this.handleSubmit}>
-					<Box id='name-form'>
-						<label htmlFor='new-library-name'>Name: </label>
-						<TextField
-							onChange={this.handleInputChange}
-							value={this.state.newLibrary.name}
-							id='outlined-name-input'
-							label='Name'
-							className='textField'
-							type='text'
-							name='name'
-							autoComplete='name'
-							margin='normal'
-							variant='outlined'
-						/>
-					</Box>
-					<Box>
-						<label htmlFor='new-library-address'>Address:</label>
-						<TextField
-							id='outlined-address-input'
-							label='address'
-							className='textField'
-							type='text'
-							name='address'
-							autoComplete='Address'
-							margin='normal'
-							variant='outlined'
-							onChange={this.handleInputChange}
-							value={this.state.newLibrary.address}
-						/>
-					</Box>
-					<Box>
-						<label htmlFor='new-library-city'>City:</label>
-						<TextField
-							id='outlined-city-input'
-							label='city'
-							className='textField'
-							type='text'
-							name='city'
-							autoComplete='City'
-							margin='normal'
-							variant='outlined'
-							onChange={this.handleInputChange}
-							value={this.state.newLibrary.city}
-						/>
-					</Box>
-					<div id='zipcode-form'>
-						{/* <label htmlFor='new-library-zipCode'>Zipcode:</label> */}
-						<TextField
-							id='outlined-zipcode-input'
-							label='zipcode'
-							className='textField'
-							type='text'
-							name='zipcode'
-							autoComplete='Zipcode'
-							margin='normal'
-							variant='outlined'
-							onChange={this.handleInputChange}
-							value={this.state.newLibrary.zipcode}
-						/>
-					</div>
 					<div id='charter-form'>
-						<label htmlFor='new-library-charter'>Charter Number:</label>
 						<TextField
 							id='outlined-charter-input'
 							label='Charter Number'
@@ -150,11 +114,67 @@ export default class Libraries extends Component {
 							value={this.state.newLibrary.charter}
 						/>
 					</div>
+					<Box id='steward-form'>
+						<TextField
+							onChange={this.handleInputChange}
+							value={this.state.newLibrary.steward}
+							id='outlined-steward-input'
+							label='Steward'
+							className='textField'
+							type='text'
+							name='steward'
+							autoComplete='name'
+							margin='normal'
+							variant='outlined'
+						/>
+					</Box>
+					<Box>
+						<TextField
+							id='outlined-address-input'
+							label='Address'
+							className='textField'
+							type='text'
+							name='address'
+							autoComplete='Address'
+							margin='normal'
+							variant='outlined'
+							onChange={this.handleInputChange}
+							value={this.state.newLibrary.address}
+						/>
+					</Box>
+					<Box>
+						<TextField
+							id='outlined-city-input'
+							label='City'
+							className='textField'
+							type='text'
+							name='city'
+							autoComplete='City'
+							margin='normal'
+							variant='outlined'
+							onChange={this.handleInputChange}
+							value={this.state.newLibrary.city}
+						/>
+					</Box>
+					<div id='zipcode-form'>
+						<TextField
+							id='outlined-zipcode-input'
+							label='Zipcode'
+							className='textField'
+							type='text'
+							name='zipcode'
+							autoComplete='Zipcode'
+							margin='normal'
+							variant='outlined'
+							onChange={this.handleInputChange}
+							value={this.state.newLibrary.zipcode}
+						/>
+					</div>
+
 					<div id='description-form'>
-						<label htmlFor='new-library-description'>Description: </label>
 						<TextField
 							id='outlined-description-input'
-							label='description'
+							label='Description'
 							className='textField'
 							type='text'
 							name='description'
@@ -165,35 +185,61 @@ export default class Libraries extends Component {
 							value={this.state.newLibrary.description}
 						/>
 					</div>
+					<div id='description-form'>
+						<TextField
+							id='outlined-imgUrl-input'
+							label='Image URL'
+							className='textField'
+							type='text'
+							name='imgUrl'
+							autoComplete='imgUrl'
+							margin='normal'
+							variant='outlined'
+							onChange={this.handleInputChange}
+							value={this.state.newLibrary.imgUrl}
+						/>
+					</div>
 					<div id='form-submit'>
-						<input type='submit' value='Create Library' />
+						<input id='submit-form' type='submit' />
+						<label htmlFor='submit-form'>
+							<Button variant='contained' component='span'>
+								Create Library
+							</Button>
+						</label>
 					</div>
 				</form>
 			</Container>
 		) : (
 			<Container>
-				<Grid container spacing={3}>
-				<Grid item xs={3}>
-						<Container>
-							<h3>About</h3>
-
-						</Container>
+				<Grid container spacing={2}>
+					<Grid item xs={2}>
+						<Paper>
+							<Typography variant='h6'>About</Typography>
+							<Typography variant='p'>
+								Lorem ipsum, dolor sit amet consectetur adipisicing elit. Qui,
+								dolorem dignissimos. Tenetur placeat mollitia possimus
+								blanditiis deleniti qui numquam, reprehenderit dignissimos
+								voluptatibus doloribus quasi atque sunt aliquid ipsam aut
+								laboriosam ipsa. Inventore, tempore, vitae delectus distinctio.
+							</Typography>
+						</Paper>
 					</Grid>
-					<Grid item xs={9}>
-				
-					
-								<Button
-									variant='contained'
-									color='primary'
-									onClick={this.handleToggleNewForm}>
-									New Library
-								</Button>
-				
-			
-							<Paper>{librariesList}</Paper>
-					
+					<Grid item xs={10}>
+						<Paper>
+							<Typography variant='h5' gutterBottom>
+								All Libraries
+							</Typography>
+							<Button
+								variant='contained'
+								color='primary'
+								onClick={this.handleToggleNewForm}>
+								New Library
+							</Button>
+							<Box id='librarylist'>
+								<List component='ul'>{librariesList}</List>
+							</Box>
+						</Paper>
 					</Grid>
-
 				</Grid>
 			</Container>
 		);

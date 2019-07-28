@@ -3,18 +3,13 @@ const mongoose = require('./connection.js')
 
 
 const LibrarySchema = new mongoose.Schema({
-  name: String,
-  address: {
-   type: String,
-   required: true
- },
- city: {
-   type: String,
-   required: true
- },
+  charter: Number,
+  steward: String,
+  address: String,
+ city: String,
  zipcode: String,
- charter: Number,
  description: String,
+ imgUrl: String
 })
 
 
