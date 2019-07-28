@@ -39,6 +39,10 @@ function deleteBook(bookId) {
   return BookCollection.findByIdAndDelete(bookId)
 }
 
+function deleteAllBooks() {
+  return BookCollection.deleteMany()
+}
+
 
 module.exports = {
   getAllBooks,

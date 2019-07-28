@@ -6,10 +6,12 @@ const LibrarySchema = new mongoose.Schema({
   charter: Number,
   steward: String,
   address: String,
- city: String,
- zipcode: String,
- description: String,
- imgUrl: String
+  city: String,
+  zipcode: String,
+  description: String,
+  imgUrl: String,
+  lat: String,
+  long: String
 })
 
 
@@ -36,11 +38,16 @@ function deleteLibrary(libraryId) {
   return LibraryCollection.findByIdAndDelete(libraryId)
 }
 
+function deleteAllLibraries() {
+  return LibraryCollection.deleteMany()
+}
+
 
 module.exports = {
   getAllLibraries,
   getLibrary,
   addNewLibrary,
   updateLibrary,
-  deleteLibrary
+  deleteLibrary,
+  deleteAllLibraries
 }
