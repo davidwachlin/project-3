@@ -99,6 +99,7 @@ export default class Libraries extends Component {
 		});
 		return this.state.isNewFormDisplayed ? (
 			<Container>
+				<Paper>
 				<form onSubmit={this.handleSubmit}>
 					<div id='charter-form'>
 						<TextField
@@ -200,14 +201,16 @@ export default class Libraries extends Component {
 						/>
 					</div>
 					<div id='form-submit'>
-						<input id='submit-form' type='submit' />
+
 						<label htmlFor='submit-form'>
 							<Button variant='contained' component='span'>
 								Create Library
+								<input id='submit-form' type='submit' style={{display: "none"}}/>
 							</Button>
 						</label>
 					</div>
 				</form>
+				</Paper>
 			</Container>
 		) : (
 			<Container>
@@ -215,7 +218,7 @@ export default class Libraries extends Component {
 					<Grid item xs={2}>
 						<Paper>
 							<Typography variant='h6'>About</Typography>
-							<Typography variant='p'>
+							<Typography variant='p' style={{lineHeight: "2rem"}}>
 								Lorem ipsum, dolor sit amet consectetur adipisicing elit. Qui,
 								dolorem dignissimos. Tenetur placeat mollitia possimus
 								blanditiis deleniti qui numquam, reprehenderit dignissimos
