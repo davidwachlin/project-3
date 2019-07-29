@@ -95,6 +95,7 @@ export default class Books extends Component {
 			);
 		});
 		return this.state.isNewFormDisplayed ? (
+			
 			<form onSubmit={this.handleSubmit}>
 				<Box>
 					<TextField

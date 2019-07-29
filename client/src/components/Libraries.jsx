@@ -17,6 +17,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import { ListItem } from '@material-ui/core';
 import List from '@material-ui/core/List';
+import Divider from '@material-ui/core/Divider'
 
 
 
@@ -210,7 +211,8 @@ export default class Libraries extends Component {
 				<Grid container spacing={2}>
 					<Grid item xs={2}>
 						<Paper>
-							<Typography variant='h6'>About</Typography>
+							<Typography style={{marginBottom: ".75rem"}} variant='h6'>About</Typography>
+							
 							<Typography variant='p' style={{lineHeight: "2rem"}}>
 								Lorem ipsum, dolor sit amet consectetur adipisicing elit. Qui,
 								dolorem dignissimos. Tenetur placeat mollitia possimus

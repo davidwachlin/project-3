@@ -196,8 +196,9 @@ export default class SingleBook extends Component {
 						<div>
 						<Button variant='contained' style={{marginTop: 15}}color="secondary" onClick={this.handleDeleteBook}>Delete Book</Button>
 						</div>
-
+						<Button style={{marginTop: 15}} variant='contained'>
 						<Link to={`/${this.props.match.params.libraryId}`}> Back </Link>
+						</Button>
 				</Card>
 			</Container>
 		);
