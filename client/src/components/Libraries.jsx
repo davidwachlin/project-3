@@ -98,7 +98,7 @@ export default class Libraries extends Component {
 			);
 		});
 		return this.state.isNewFormDisplayed ? (
-			<Container>
+			<Container style={{marginTop: "2rem"}}>
 				<Paper>
 				<form onSubmit={this.handleSubmit}>
 					<div id='charter-form'>
@@ -213,7 +213,7 @@ export default class Libraries extends Component {
 				</Paper>
 			</Container>
 		) : (
-			<Container>
+			<Container style={{marginTop: "2rem"}}>
 				<Grid container spacing={2}>
 					<Grid item xs={2}>
 						<Paper>

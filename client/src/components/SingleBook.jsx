@@ -1,156 +1,193 @@
-import React, { Component } from 'react'
-import axios from 'axios'
-import { Redirect, Link } from 'react-router-dom'
-import Box from '@material-ui/core/Box'
-import TextField from "@material-ui/core/TextField";
-import Button from '@material-ui/core/Button'
+import React, { Component } from 'react';
+import axios from 'axios';
+import { Redirect, Link } from 'react-router-dom';
+import Box from '@material-ui/core/Box';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+import Container from '@material-ui/core/Container';
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import Divider from '@material-ui/core/Divider';
+import Card from '@material-ui/core/Card'
 
 export default class SingleBook extends Component {
-    
-    state = {
-        book: {},
-        isEditFormDisplayed: false,
-        redirectToHome: false
-    }
+	state = {
+		book: {},
+		isEditFormDisplayed: false,
+		redirectToHome: false
+	};
 
-    componentDidMount() {
-        axios.get(`/api/libraries/${this.props.match.params.libraryId}/books/${this.props.match.params.bookId}`)
-            .then((res) => {
-                this.setState({book: res.data})
-            })
-    }
+	componentDidMount() {
+		axios
+			.get(
+				`/api/libraries/${this.props.match.params.libraryId}/books/${
+					this.props.match.params.bookId
+				}`
+			)
+			.then(res => {
+				this.setState({ book: res.data });
+			});
+	}
 
-    handleInputChange = (event) => {
-        const copiedBook = {...this.state.book}
-        copiedBook[event.target.name] = event.target.value
+	handleInputChange = event => {
+		const copiedBook = { ...this.state.book };
+		copiedBook[event.target.name] = event.target.value;
 
-        this.setState({book: copiedBook})
-    }
+		this.setState({ book: copiedBook });
+	};
 
-    handleSubmit = (event) => {
-        event.preventDefault()
-        axios.put(`/api/libraries/${this.props.match.params.libraryId}/books/${this.props.match.params.bookId}`, this.state.book)
-            .then((res) => {
-                this.setState({
-                    book: res.data,
-                    isEditFormDisplayed: false
-                })
-            })
-    }
+	handleSubmit = event => {
+		event.preventDefault();
+		axios
+			.put(
+				`/api/libraries/${this.props.match.params.libraryId}/books/${
+					this.props.match.params.bookId
+				}`,
+				this.state.book
+			)
+			.then(res => {
+				this.setState({
+					book: res.data,
+					isEditFormDisplayed: false
+				});
+			});
+	};
 
-    handleToggleEditForm = ()  => {
-        this.setState((state) => {
-            return {isEditFormDisplayed: !state.isEditFormDisplayed}
-        })
-    }
+	handleToggleEditForm = () => {
+		this.setState(state => {
+			return { isEditFormDisplayed: !state.isEditFormDisplayed };
+		});
+	};
 
-    handleDeleteBook = () => {
-        axios.delete(`/api/libraries/${this.props.match.params.libraryId}/books/${this.props.match.params.bookId}`)
-            .then(() => {
-                this.setState({redirectToHome: true})
-            })
-    }
+	handleDeleteBook = () => {
+		axios
+			.delete(
+				`/api/libraries/${this.props.match.params.libraryId}/books/${
+					this.props.match.params.bookId
+				}`
+			)
+			.then(() => {
+				this.setState({ redirectToHome: true });
+			});
+	};
 
-    render() {
-        if (this.state.redirectToHome) {  
-            return <Redirect to={`/${this.props.match.params.libraryId}`} />
-        }
-        return (
-            
-                this.state.isEditFormDisplayed
-                ? 
-                <form onSubmit={this.handleSubmit}>
-                <Box>
-				<TextField
-					id='new-book-title'
-					label='Title'
-					type='text'
-					name='title'
-					autoComplete='title'
-					margin='normal'
-					variant='outlined'
-					onChange={this.handleInputChange}
-					value={this.state.book.title}
-				/>
+	render() {
+		if (this.state.redirectToHome) {
+			return <Redirect to={`/${this.props.match.params.libraryId}`} />;
+		}
+		return this.state.isEditFormDisplayed ? (
+			<form onSubmit={this.handleSubmit}>
+				<Box>
+					<TextField
+						id='new-book-title'
+						label='Title'
+						type='text'
+						name='title'
+						autoComplete='title'
+						margin='normal'
+						variant='outlined'
+						onChange={this.handleInputChange}
+						value={this.state.book.title}
+					/>
 				</Box>
 				<Box>
-				<TextField
-					id='new-book-author'
-					label='Author'
-					type='text'
-					name='author'
-					autoComplete='author'
-					margin='normal'
-					variant='outlined'
-					onChange={this.handleInputChange}
-					value={this.state.book.author}
-				/>
+					<TextField
+						id='new-book-author'
+						label='Author'
+						type='text'
+						name='author'
+						autoComplete='author'
+						margin='normal'
+						variant='outlined'
+						onChange={this.handleInputChange}
+						value={this.state.book.author}
+					/>
 				</Box>
 				<Box>
-				<TextField
-					id='new-book-isbn'
-					label='ISBN'
-					type='text'
-					name='isbn'
-					autoComplete='isbn'
-					margin='normal'
-					variant='outlined'
-					onChange={this.handleInputChange}
-					value={this.state.book.isbn}
-				/>
+					<TextField
+						id='new-book-isbn'
+						label='ISBN'
+						type='text'
+						name='isbn'
+						autoComplete='isbn'
+						margin='normal'
+						variant='outlined'
+						onChange={this.handleInputChange}
+						value={this.state.book.isbn}
+					/>
 				</Box>
 				<Box>
-				<TextField
-					id='new-book-description'
-					label='Description'
-					type='text'
-					multiline
-					rows='4'
-					defaultValue='Description'
-					margin='normal'
-					variant='outlined'
-					onChange={this.handleInputChange}
-					value={this.state.book.description}
-				/>
+					<TextField
+						id='new-book-description'
+						label='Description'
+						type='text'
+						multiline
+						rows='4'
+						defaultValue='Description'
+						margin='normal'
+						variant='outlined'
+						onChange={this.handleInputChange}
+						value={this.state.book.description}
+					/>
 				</Box>
 				<Box>
-				<TextField
-					id='new-book-imgUrl'
-					label='Image URL'
-					type='text'
-					rows='4'
-					defaultValue='Image URL'
-					margin='normal'
-					variant='outlined'
-					onChange={this.handleInputChange}
-					value={this.state.book.imgUrl}
-				/>
+					<TextField
+						id='new-book-imgUrl'
+						label='Image URL'
+						type='text'
+						rows='4'
+						defaultValue='Image URL'
+						margin='normal'
+						variant='outlined'
+						onChange={this.handleInputChange}
+						value={this.state.book.imgUrl}
+					/>
 				</Box>
-				<input
-        			id="submit-form"
-        			type="submit"
-      			/>
-      			<label htmlFor="submit-form">
-        			<Button variant="contained" component="span" >
-          				Update Book
-        			</Button>
-					</label>
+				<input id='submit-form' type='submit' />
+				<label htmlFor='submit-form'>
+					<Button variant='contained' component='span'>
+						Update Book
+					</Button>
+				</label>
 			</form>
-                : <div>
-                    <Link to={`/${this.props.match.params.libraryId}`}> Back </Link>
-                    <button onClick={this.handleToggleEditForm}>Edit Book</button>
-                    <button onClick={this.handleDeleteBook}>Delete Book</button>
-                    <h2>{this.state.book.title}</h2>
-                    <p>{this.state.book.author}</p>
-                    <p>{this.state.book.isbn}</p>
-                    <p>{this.state.book.description}</p>
-                    <p>{this.state.book.imgUrl}</p>
+		) : (
+			<Container>
+				<Card style={{ marginTop: '2rem', paddingTop: "1rem" }}>
+					<Grid container>
+						<Grid item xs>
+							<img src={this.state.book.imgUrl} alt='book cover' />
+						</Grid>
 
+						<Grid item xs container direction='column' spacing={2} >
+							<div style={{maxWidth: "90%"}}>
+							<List>
+								<ListItem>
+									<h2>{this.state.book.title}</h2>
+								</ListItem>
+								<Divider variant='inset' component='li' />
+								<ListItem>
+									<p>{this.state.book.author}</p>
+								</ListItem>
+								<ListItem>
+									<p>{this.state.book.isbn}</p>
+								</ListItem>
+								<ListItem>
+									<p>{this.state.book.description}</p>
+								</ListItem>
+								
+							</List>
+							</div>
+						</Grid>
+					</Grid>
 
-                </div>
-                
-                
-            
-        )
-    }
+						<button onClick={this.handleToggleEditForm}>Edit Book</button>
+						<Button variant='contained' style={{marginTop: 15}}color="secondary" onClick={this.handleDeleteBook}>Delete Book</Button>
+
+						<Link to={`/${this.props.match.params.libraryId}`}> Back </Link>
+				</Card>
+			</Container>
+		);
+	}
 }
