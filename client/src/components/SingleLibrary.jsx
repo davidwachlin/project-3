@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import { Redirect, Link } from 'react-router-dom';
 import Books from './Books';
-
 import MapContainer from './Map';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
@@ -19,7 +18,8 @@ const styles = theme => ({
 		flexGrow: 1
 	},
 	paper: {
-		margin: 'auto'
+		margin: 'auto',
+		marginTop: 20
 	},
 	img: {
 		width: 350,
@@ -40,6 +40,7 @@ class SingleLibrary extends Component {
 			.then(res => {
 				this.setState({ library: res.data });
 			});
+
 	}
 
 	handleInputChange = event => {
