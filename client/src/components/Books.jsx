@@ -1,21 +1,28 @@
-import React, { Component } from "react";
-import axios from "axios";
-import { Link } from "react-router-dom";
-import Card from "@material-ui/core/Card";
-import Grid from "@material-ui/core/Grid";
-import Tooltip from "@material-ui/core/Tooltip";
-import AddIcon from "@material-ui/icons/Add";
-import Fab from "@material-ui/core/Fab";
-import DeleteIcon from "@material-ui/icons/Delete";
-import IconButton from "@material-ui/core/IconButton";
-import CardMedia from "@material-ui/core/CardMedia";
-import CardActionArea from "@material-ui/core/CardActionArea";
-import CardActions from "@material-ui/core/CardActions";
-import CardContent from "@material-ui/core/CardContent";
-import TextField from "@material-ui/core/TextField";
-import Box from '@material-ui/core/Box'
-import Button from '@material-ui/core/Button'
-import Container from '@material-ui/core/Container'
+import React, { Component } from 'react';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
+import Card from '@material-ui/core/Card';
+import Grid from '@material-ui/core/Grid';
+import Tooltip from '@material-ui/core/Tooltip';
+import AddIcon from '@material-ui/icons/Add';
+import Fab from '@material-ui/core/Fab';
+import DeleteIcon from '@material-ui/icons/Delete';
+import IconButton from '@material-ui/core/IconButton';
+import CardMedia from '@material-ui/core/CardMedia';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import TextField from '@material-ui/core/TextField';
+import Box from '@material-ui/core/Box';
+import Button from '@material-ui/core/Button';
+import Container from '@material-ui/core/Container';
+import './Books.css';
+
+const styles = {
+	card: {
+		width: '125px'
+	}
+};
 
 export default class Books extends Component {
 	state = {
@@ -26,7 +33,7 @@ export default class Books extends Component {
 			author: '',
 			isbn: '',
 			description: '',
-			imgUrl: '',
+			imgUrl: ''
 		}
 	};
 
@@ -69,7 +76,7 @@ export default class Books extends Component {
 		let booksList = this.state.books.map(book => {
 			return (
 				<Grid item key={book._id} className='books'>
-					<Card>
+					<Card style={styles.card}>
 						<CardActionArea>
 							<CardMedia
 								component='img'
@@ -90,79 +97,76 @@ export default class Books extends Component {
 		return this.state.isNewFormDisplayed ? (
 			<form onSubmit={this.handleSubmit}>
 				<Box>
-				<TextField
-					id='new-book-title'
-					label='Title'
-					type='text'
-					name='title'
-					autoComplete='title'
-					margin='normal'
-					variant='outlined'
-					onChange={this.handleInputChange}
-					value={this.state.newBook.title}
-				/>
+					<TextField
+						id='new-book-title'
+						label='Title'
+						type='text'
+						name='title'
+						autoComplete='title'
+						margin='normal'
+						variant='outlined'
+						onChange={this.handleInputChange}
+						value={this.state.newBook.title}
+					/>
 				</Box>
 				<Box>
-				<TextField
-					id='new-book-author'
-					label='Author'
-					type='text'
-					name='author'
-					autoComplete='author'
-					margin='normal'
-					variant='outlined'
-					onChange={this.handleInputChange}
-					value={this.state.newBook.author}
-				/>
+					<TextField
+						id='new-book-author'
+						label='Author'
+						type='text'
+						name='author'
+						autoComplete='author'
+						margin='normal'
+						variant='outlined'
+						onChange={this.handleInputChange}
+						value={this.state.newBook.author}
+					/>
 				</Box>
 				<Box>
-				<TextField
-					id='new-book-isbn'
-					label='ISBN'
-					type='text'
-					name='isbn'
-					autoComplete='isbn'
-					margin='normal'
-					variant='outlined'
-					onChange={this.handleInputChange}
-					value={this.state.newBook.isbn}
-				/>
+					<TextField
+						id='new-book-isbn'
+						label='ISBN'
+						type='text'
+						name='isbn'
+						autoComplete='isbn'
+						margin='normal'
+						variant='outlined'
+						onChange={this.handleInputChange}
+						value={this.state.newBook.isbn}
+					/>
 				</Box>
 				<Box>
-				<TextField
-					id='new-book-description'
-					label='Description'
-					type='text'
-					name='description'
-					multiline
-					rows='4'
-					margin='normal'
-					variant='outlined'
-					onChange={this.handleInputChange}
-					value={this.state.newBook.description}
-				/>
+					<TextField
+						id='new-book-description'
+						label='Description'
+						type='text'
+						name='description'
+						multiline
+						rows='4'
+						margin='normal'
+						variant='outlined'
+						onChange={this.handleInputChange}
+						value={this.state.newBook.description}
+					/>
 				</Box>
 				<Box>
-				<TextField
-					id='new-book-imgUrl'
-					label='Image URL'
-					type='text'
-					name='imgUrl'
-					margin='normal'
-					variant='outlined'
-					onChange={this.handleInputChange}
-					value={this.state.newBook.imgUrl}
-				/>
+					<TextField
+						id='new-book-imgUrl'
+						label='Image URL'
+						type='text'
+						name='imgUrl'
+						margin='normal'
+						variant='outlined'
+						onChange={this.handleInputChange}
+						value={this.state.newBook.imgUrl}
+					/>
 				</Box>
-				<input
-        			id="submit-form"
-        			type="submit"
-      			/>
-      			<label htmlFor="submit-form">
-        			<Button variant="contained" component="span" >
-          				Add Book
-        			</Button>
-					</label>
+				<label htmlFor='submit-form'>
+					<Button variant='contained' component='span'>
+						Add Book
+						<input id='submit-form' type='submit' style={{ display: 'none' }} />
+					</Button>
+				</label>
 			</form>
 		) : (
 			<div>
@@ -173,9 +177,9 @@ export default class Books extends Component {
 				</Tooltip>
 
 				<Container>
-				<Grid container spacing={4}>
-					{booksList}
-				</Grid>
+					<Grid container spacing={4}>
+						{booksList}
+					</Grid>
 				</Container>
 			</div>
 		);

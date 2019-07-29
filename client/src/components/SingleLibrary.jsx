@@ -232,7 +232,10 @@ class SingleLibrary extends Component {
 						</Grid>
 
 						<Grid item xs>
-							<MapContainer />
+							<MapContainer 
+								lat={this.state.library.lat}
+								long={this.state.library.long}
+							/>
 						</Grid>
 					</Grid>
 				</Paper>
