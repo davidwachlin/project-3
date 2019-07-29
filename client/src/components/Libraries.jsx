@@ -84,14 +84,7 @@ export default class Libraries extends Component {
 							</Typography>
 							<Typography>{library.description}</Typography>
 						</CardContent>
-						<CardActions>
-							<Button size='small' color='primary'>
-								View
-							</Button>
-							<Button size='small' color='primary'>
-								Edit
-							</Button>
-						</CardActions>
+
 					</Card>
 				</ListItem>
 

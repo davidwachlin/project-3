@@ -78,6 +78,10 @@ export default class SingleBook extends Component {
 			return <Redirect to={`/${this.props.match.params.libraryId}`} />;
 		}
 		return this.state.isEditFormDisplayed ? (
+			<Container>
+				<Paper style={{marginTop: "2rem"}}>
+
+
 			<form onSubmit={this.handleSubmit}>
 				<Box>
 					<TextField
@@ -145,13 +149,16 @@ export default class SingleBook extends Component {
 						value={this.state.book.imgUrl}
 					/>
 				</Box>
-				<input id='submit-form' type='submit' />
+
 				<label htmlFor='submit-form'>
 					<Button variant='contained' component='span'>
 						Update Book
+						<input id='submit-form' type='submit' style={{display: "none"}}/>
 					</Button>
 				</label>
 			</form>
+			</Paper>
+			</Container>
 		) : (
 			<Container>
 				<Card style={{ marginTop: '2rem', paddingTop: "1rem" }}>
@@ -182,8 +189,13 @@ export default class SingleBook extends Component {
 						</Grid>
 					</Grid>
 
-						<button onClick={this.handleToggleEditForm}>Edit Book</button>
+
+<div>
+						<Button variant='contained' style={{marginTop: 15}} onClick={this.handleToggleEditForm}>Edit Book</Button>
+						</div>
+						<div>
 						<Button variant='contained' style={{marginTop: 15}}color="secondary" onClick={this.handleDeleteBook}>Delete Book</Button>
+						</div>
 
 						<Link to={`/${this.props.match.params.libraryId}`}> Back </Link>
 				</Card>

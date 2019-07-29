@@ -25,6 +25,20 @@ const library2 = {
   long: '-84.30494'
 
 }
+const demoLibrary = {
+  charter: 37903,
+  steward: 'John Doe',
+  address: '113 Flora Ave. NE',
+  city: 'Atlanta',
+  zipcode: '30307',
+  description: 'Edgewood Little Library',
+  imgUrl: 'https://i.imgur.com/p3hQs65.jpg',
+  lat: '33.75668',
+  long: '84.3435'
+
+}
+
+
 
 const book = {
   isbn: '9781593275846',
